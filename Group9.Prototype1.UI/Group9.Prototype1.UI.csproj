@@ -30,7 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxControlToolkit, Version=3.0.20820.16598, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL" />
+    <Reference Include="AjaxControlToolkit, Version=3.0.30512.17815, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -146,10 +149,6 @@
     <ProjectReference Include="..\Group9.Prototype1.DataAccess\Group9.Prototype1.DataAccess.csproj">
       <Project>{459AABE9-538F-4559-BE7B-FC68FC659CBD}</Project>
       <Name>Group9.Prototype1.DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LoreSoft.MathExpressions\LoreSoft.MathExpressions.csproj">
-      <Project>{B6813448-FCE2-429C-81B5-9722FEA839B8}</Project>
-      <Name>LoreSoft.MathExpressions</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

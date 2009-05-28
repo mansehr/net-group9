@@ -1,7 +1,0 @@
-D:\Users\Kristoffer\Documents\Skola\netprog09\Build\Debug\LoreSoft.MathExpressions.dll
-D:\Users\Kristoffer\Documents\Skola\netprog09\Build\Debug\LoreSoft.MathExpressions.pdb
-D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\LoreSoft.MathExpressions\obj\Debug\ResolveAssemblyReference.cache
-D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\LoreSoft.MathExpressions\obj\Debug\LoreSoft.MathExpressions.Properties.Resources.resources
-D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\LoreSoft.MathExpressions\obj\Debug\LoreSoft.MathExpressions.csproj.GenerateResource.Cache
-D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\LoreSoft.MathExpressions\obj\Debug\LoreSoft.MathExpressions.dll
-D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\LoreSoft.MathExpressions\obj\Debug\LoreSoft.MathExpressions.pdb
