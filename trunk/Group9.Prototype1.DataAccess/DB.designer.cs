@@ -406,13 +406,13 @@ namespace Group9.Prototype1.DataAccess
 		private void attach_Persons(Person entity)
 		{
 			this.SendPropertyChanging();
-			entity.Role1 = this;
+			entity.Role = this;
 		}
 		
 		private void detach_Persons(Person entity)
 		{
 			this.SendPropertyChanging();
-			entity.Role1 = null;
+			entity.Role = null;
 		}
 	}
 	
@@ -1498,7 +1498,7 @@ namespace Group9.Prototype1.DataAccess
 		}
 		
 		[Association(Name="Role_Person", Storage="_Role1", ThisKey="role", OtherKey="Name", IsForeignKey=true)]
-		public Role Role1
+		public Role Role
 		{
 			get
 			{
@@ -1526,7 +1526,7 @@ namespace Group9.Prototype1.DataAccess
 					{
 						this._role = default(string);
 					}
-					this.SendPropertyChanged("Role1");
+					this.SendPropertyChanged("Role");
 				}
 			}
 		}

@@ -68,7 +68,7 @@
       <Column Name="email" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="role" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Association Name="Person_Participant" Member="Participants" ThisKey="pnr" OtherKey="pnr" Type="Participant" />
-      <Association Name="Role_Person" Member="Role1" ThisKey="role" OtherKey="Name" Type="Role" IsForeignKey="true" />
+      <Association Name="Role_Person" Member="Role" Storage="_Role1" ThisKey="role" OtherKey="Name" Type="Role" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
