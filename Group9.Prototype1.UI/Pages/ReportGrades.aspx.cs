@@ -26,7 +26,7 @@ namespace Group9.Prototype1.UI.Pages
             using (var scope = new TransactionScope())
             using (var db = new DBDataContext())
             {
-                TextBox tbResult;
+                DropDownList tbResult;
                 PartiPart partiPart;
                 string pnr;
 
@@ -39,9 +39,9 @@ namespace Group9.Prototype1.UI.Pages
 
                 foreach (GridViewRow row in gvStudentsAndGrades.Rows)
                 {
-                    tbResult = (TextBox)row.FindControl("tbResult");
+                    tbResult = (DropDownList)row.FindControl("tbResult");
 
-                    if (tbResult.Text.Length < 1)
+                    if (tbResult.SelectedValue.Length < 1)
                     {
                         continue;
                     }
@@ -62,7 +62,7 @@ namespace Group9.Prototype1.UI.Pages
                         db.PartiParts.InsertOnSubmit(partiPart);
                     }
 
-                    partiPart.result = tbResult.Text[0];
+                    partiPart.result = tbResult.SelectedValue[0];
                     partiPart.date = DateTime.Now;
                     partiPart.signature = "KR";
                 }
@@ -87,7 +87,7 @@ namespace Group9.Prototype1.UI.Pages
             if (e.Row.RowType != DataControlRowType.DataRow) 
                 return;
 
-            var tbResult = (TextBox)e.Row.FindControl("tbResult");
+            var tbResult = (DropDownList)e.Row.FindControl("tbResult");
             var liResult = (Literal)e.Row.FindControl("liResult");
 
             var data = ((Participant)e.Row.DataItem).GetResult(ddlCoursePart.SelectedValue);
@@ -98,7 +98,7 @@ namespace Group9.Prototype1.UI.Pages
 
             if (data.Result != null)
             {
-                tbResult.Text = data.Result.ToString();
+                tbResult.SelectedValue = data.Result.ToString();
                 liResult.Text = string.Format("Last result {0}, registered by: {1}, {2:g}", data.Result, data.Signature, data.Date);
             }
         }

@@ -19,7 +19,7 @@
     </asp:LinqDataSource>
     <asp:LinqDataSource ID="ldsCourseParts" runat="server" 
         ContextTypeName="Group9.Prototype1.DataAccess.DBDataContext" 
-        TableName="CourseParts" Where="code == @code">
+        TableName="CourseParts" Where="code == @code && runid == @runid">
         <WhereParameters>
             <asp:ControlParameter ControlID="ddlCourse" Name="code" 
                 PropertyName="SelectedValue" Type="String" />
@@ -29,13 +29,12 @@
     </asp:LinqDataSource>
     <asp:LinqDataSource id="ldsParticipants" runat="server" 
         ContextTypeName="Group9.Prototype1.DataAccess.DBDataContext"
-        TableName="Participants" Where="runid == @runid &amp;&amp; code == @code &amp;&amp; roll == @roll">
+        TableName="Participants" Where="runid == @runid &amp;&amp; code == @code">
         <WhereParameters>
             <asp:ControlParameter ControlID="ddlCourse" Name="code" 
                 PropertyName="SelectedValue" Type="String" />
             <asp:ControlParameter ControlID="ddlCourseRun" Name="runid" 
                 PropertyName="SelectedValue" Type="String" />
-            <asp:Parameter DefaultValue="student" Name="roll" Type="String" />
         </WhereParameters>
     </asp:LinqDataSource>
     <asp:ScriptManager ID="scriptManager" runat="server" />
@@ -57,7 +56,7 @@
             </li>
             <li><label>Course run</label>
                 <asp:DropDownList ID="ddlCourseRun" runat="server" DataTextField="startDate" DataTextFormatString="{0:d}" 
-                    DataValueField="runid" DataSourceID="ldsCourseRuns" ondatabound="AddBlankItem"/>
+                    DataValueField="runid" DataSourceID="ldsCourseRuns" ondatabound="AddBlankItem" AutoPostBack="true" />
             </li>
             <li><label>Part</label>
                 <asp:DropDownList ID="ddlCoursePart" runat="server" DataTextField="description" 
@@ -82,6 +81,7 @@
                 <asp:TemplateField HeaderText="Grade">
                     <ItemTemplate>
                         <asp:DropDownList ID="tbResult" runat="server">
+                            <asp:ListItem Text="" />
                             <asp:ListItem Text="F" />
                             <asp:ListItem Text="E" />
                             <asp:ListItem Text="D" />
