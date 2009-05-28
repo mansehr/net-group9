@@ -14,11 +14,14 @@
         <p>
         Behörighet:
         <asp:DropDownList ID="role_select" runat="server" AutoPostBack="True" 
-            onselectedindexchanged="DropDownList1_SelectedIndexChanged" >
-            <asp:ListItem Value="student">Student</asp:ListItem>
-            <asp:ListItem Value="admin">Kursadministratör</asp:ListItem>
-            <asp:ListItem Value="assistant">Kursassistent</asp:ListItem>
+            onselectedindexchanged="DropDownList1_SelectedIndexChanged" 
+                DataSourceID="roleDataSource" DataTextField="description" 
+                DataValueField="code" >
         </asp:DropDownList>
+            <asp:LinqDataSource ID="roleDataSource" runat="server" 
+                ContextTypeName="Group9.Prototype1.DataAccess.DBDataContext" 
+                Select="new (code, description)" TableName="Roles">
+            </asp:LinqDataSource>
         </p>
         <p>
         Användare:
