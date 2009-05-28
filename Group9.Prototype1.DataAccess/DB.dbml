@@ -12,9 +12,9 @@
   </Table>
   <Table Name="dbo.Role" Member="Roles">
     <Type Name="Role">
-      <Column Name="code" Member="Name" Storage="_code" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Association Name="Role_Person" Member="Persons" ThisKey="Name" OtherKey="role" Type="Person" />
+      <Association Name="Role_Person" Member="Persons" ThisKey="code" OtherKey="role" Type="Person" />
     </Type>
   </Table>
   <Table Name="dbo.CoursePart" Member="CourseParts">
@@ -68,7 +68,7 @@
       <Column Name="email" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="role" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Association Name="Person_Participant" Member="Participants" ThisKey="pnr" OtherKey="pnr" Type="Participant" />
-      <Association Name="Role_Person" Member="Role" Storage="_Role1" ThisKey="role" OtherKey="Name" Type="Role" IsForeignKey="true" />
+      <Association Name="Role_Person" Member="Role" Storage="_Role1" ThisKey="role" OtherKey="code" Type="Role" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

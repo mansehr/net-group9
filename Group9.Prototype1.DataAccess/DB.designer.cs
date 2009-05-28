@@ -318,8 +318,8 @@ namespace Group9.Prototype1.DataAccess
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
+    partial void OncodeChanging(string value);
+    partial void OncodeChanged();
     partial void OndescriptionChanging(string value);
     partial void OndescriptionChanged();
     #endregion
@@ -330,8 +330,8 @@ namespace Group9.Prototype1.DataAccess
 			OnCreated();
 		}
 		
-		[Column(Name="code", Storage="_code", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Name
+		[Column(Storage="_code", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string code
 		{
 			get
 			{
@@ -341,11 +341,11 @@ namespace Group9.Prototype1.DataAccess
 			{
 				if ((this._code != value))
 				{
-					this.OnNameChanging(value);
+					this.OncodeChanging(value);
 					this.SendPropertyChanging();
 					this._code = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
+					this.SendPropertyChanged("code");
+					this.OncodeChanged();
 				}
 			}
 		}
@@ -370,7 +370,7 @@ namespace Group9.Prototype1.DataAccess
 			}
 		}
 		
-		[Association(Name="Role_Person", Storage="_Persons", ThisKey="Name", OtherKey="role")]
+		[Association(Name="Role_Person", Storage="_Persons", ThisKey="code", OtherKey="role")]
 		public EntitySet<Person> Persons
 		{
 			get
@@ -1497,7 +1497,7 @@ namespace Group9.Prototype1.DataAccess
 			}
 		}
 		
-		[Association(Name="Role_Person", Storage="_Role1", ThisKey="role", OtherKey="Name", IsForeignKey=true)]
+		[Association(Name="Role_Person", Storage="_Role1", ThisKey="role", OtherKey="code", IsForeignKey=true)]
 		public Role Role
 		{
 			get
@@ -1520,7 +1520,7 @@ namespace Group9.Prototype1.DataAccess
 					if ((value != null))
 					{
 						value.Persons.Add(this);
-						this._role = value.Name;
+						this._role = value.code;
 					}
 					else
 					{
