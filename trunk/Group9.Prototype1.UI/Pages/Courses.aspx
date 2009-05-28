@@ -21,7 +21,6 @@
             <asp:BoundField DataField="credits" DataFormatString="{0} hp" 
                 HeaderText="Credits" SortExpression="credits" />
             <asp:HyperLinkField DataNavigateUrlFields="code" DataNavigateUrlFormatString="~/Pages/CourseRuns.aspx?code={0}" Text="Runs" />
-            <asp:HyperLinkField DataNavigateUrlFields="code" DataNavigateUrlFormatString="~/Pages/CourseParts.aspx?code={0}" Text="Parts" />
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" DeleteImageUrl="~/Resources/Images/delete.png" EditImageUrl="~/Resources/Images/edit.png" ButtonType="Image" />
         </Columns>
     </asp:GridView>

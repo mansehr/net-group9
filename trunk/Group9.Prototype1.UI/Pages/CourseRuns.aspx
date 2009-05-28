@@ -31,8 +31,8 @@
             </asp:TemplateField>
             <asp:BoundField DataField="description" HeaderText="Description" />
             <asp:BoundField DataField="gradeFormula" HeaderText="Grade Formula" />
+            <asp:HyperLinkField DataNavigateUrlFields="code,runid" DataNavigateUrlFormatString="~/Pages/CourseParts.aspx?code={0}&runid={1}" Text="Parts" />
             <asp:HyperLinkField DataNavigateUrlFields="code,runid" DataNavigateUrlFormatString="~/Pages/CourseRunParticipants.aspx?code={0}&runid={1}" Text="Participants" />
-           
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" DeleteImageUrl="~/Resources/Images/delete.png" EditImageUrl="~/Resources/Images/edit.png" ButtonType="Image"  />
         </Columns>
     </asp:GridView>
@@ -66,12 +66,14 @@
             <asp:TemplateField HeaderText="Description" SortExpression="description">
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("description") %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox4" ErrorMessage="Required" Display="Dynamic" />
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Grade Formula">
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox5" runat="server" 
                         Text='<%# Bind("gradeFormula") %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox5" ErrorMessage="Required" Display="Dynamic" />
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:CommandField ShowInsertButton="True" CausesValidation="true" />

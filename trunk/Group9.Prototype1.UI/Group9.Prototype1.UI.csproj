@@ -193,6 +193,9 @@
     <Content Include="Resources\Icons\user.gif" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ConnectionStrings.config" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Themes\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
