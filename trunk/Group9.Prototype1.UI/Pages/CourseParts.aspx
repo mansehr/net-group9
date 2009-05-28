@@ -14,7 +14,7 @@
         </WhereParameters>
     </asp:LinqDataSource>
     
-    <h2>Course runs</h2>
+    <h2>Course run parts</h2>
 
     <asp:GridView ID="coursePartsView" runat="server" AutoGenerateColumns="False" 
         DataKeyNames="code,part" DataSourceID="ldsCourseParts">

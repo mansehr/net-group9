@@ -51,11 +51,6 @@
         oniteminserted="newParticipant_ItemInserted" 
         oniteminserting="newParticipant_ItemInserting" >
         <Fields>
-            <asp:TemplateField HeaderText="Role">
-                <EditItemTemplate>
-                    <asp:DropDownList ID="ddlRole" runat="server" DataSourceID="ldsRoles" DataValueField="Name" DataTextField="Name" SelectedValue='<%# Bind("roll") %>' />
-                </EditItemTemplate>
-            </asp:TemplateField>
             <asp:TemplateField HeaderText="Person">
                 <EditItemTemplate>
                     <asp:DropDownList ID="ddlPerson" runat="server" DataSourceID="ldsPeople" DataValueField="pnr" DataTextField="FullName" SelectedValue='<%# Bind("pnr") %>' />
