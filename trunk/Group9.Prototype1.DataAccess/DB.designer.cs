@@ -1094,7 +1094,7 @@ namespace Group9.Prototype1.DataAccess
 		
 		private System.DateTime _date;
 		
-		private double _result;
+		private char _result;
 		
 		private string _signature;
 		
@@ -1114,7 +1114,7 @@ namespace Group9.Prototype1.DataAccess
     partial void OnpartChanged();
     partial void OndateChanging(System.DateTime value);
     partial void OndateChanged();
-    partial void OnresultChanging(double value);
+    partial void OnresultChanging(char value);
     partial void OnresultChanged();
     partial void OnsignatureChanging(string value);
     partial void OnsignatureChanged();
@@ -1238,8 +1238,8 @@ namespace Group9.Prototype1.DataAccess
 			}
 		}
 		
-		[Column(Storage="_result", DbType="Float NOT NULL")]
-		public double result
+		[Column(Storage="_result", DbType="char(1) NOT NULL")]
+		public char result
 		{
 			get
 			{

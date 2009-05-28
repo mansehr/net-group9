@@ -14,12 +14,10 @@
     
     <asp:LinqDataSource ID="ldsPeople" runat="server" 
         ContextTypeName="Group9.Prototype1.DataAccess.DBDataContext" 
-        Select="new (FullName, pnr)" TableName="Persons">
-    </asp:LinqDataSource>
-    
-    <asp:LinqDataSource ID="ldsRoles" runat="server" 
-        ContextTypeName="Group9.Prototype1.DataAccess.DBDataContext" 
-        Select="new (Name)" TableName="Roles">
+        Select="new (pnr, fName, eName)" TableName="Persons" Where="role == @role">
+        <WhereParameters>
+            <asp:Parameter DefaultValue="student" Name="role" Type="String" />
+        </WhereParameters>
     </asp:LinqDataSource>
     
     <h2>Participants</h2>
@@ -27,18 +25,15 @@
     <asp:GridView ID="participants" runat="server" AutoGenerateColumns="False" 
         DataKeyNames="pnr,runid,code" DataSourceID="ldsParticipants">
         <Columns>
-            <asp:TemplateField HeaderText="Role">
-                <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("Role.Name") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Person">
+            <asp:BoundField HeaderText="SSN" DataField="pnr" />
+            <asp:TemplateField HeaderText="Name">
                 <ItemTemplate>
                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("Person.FullName") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Course grade">
                 <ItemTemplate>
+                    <%# ((Group9.Prototype1.DataAccess.Participant)Container.DataItem).GetGrade() %>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:CommandField ShowDeleteButton="True" />
@@ -46,17 +41,22 @@
     </asp:GridView>
     
     <h3>Add participant</h3>
-    <asp:DetailsView ID="newParticipant" runat="server" 
-        DataSourceID="ldsParticipants" DefaultMode="Insert" AutoGenerateRows="false" 
-        oniteminserted="newParticipant_ItemInserted" 
-        oniteminserting="newParticipant_ItemInserting" >
-        <Fields>
-            <asp:TemplateField HeaderText="Person">
-                <EditItemTemplate>
-                    <asp:DropDownList ID="ddlPerson" runat="server" DataSourceID="ldsPeople" DataValueField="pnr" DataTextField="FullName" SelectedValue='<%# Bind("pnr") %>' />
-                </EditItemTemplate>
-            </asp:TemplateField>
-            <asp:CommandField ShowInsertButton="True" />
-        </Fields>
-    </asp:DetailsView>
-</asp:Content>
+    
+    <asp:GridView ID="gvAddParticipant" runat="server" AutoGenerateColumns="False" 
+        AllowSorting="True" DataKeyNames="pnr"
+        onrowcommand="gvAddParticipant_RowCommand" 
+        onsorting="gvAddParticipant_Sorting">
+        <Columns>
+            <asp:BoundField DataField="pnr" HeaderText="SSN" ReadOnly="True" 
+                SortExpression="pnr" />
+            <asp:BoundField DataField="fName" HeaderText="First Name" ReadOnly="True" 
+                SortExpression="fName" />
+            
+            <asp:BoundField DataField="eName" HeaderText="Last Name" ReadOnly="True" 
+                SortExpression="eName" />
+            <asp:ButtonField CommandName="AddParticipant" Text="Add as student" />
+            
+        </Columns>
+    </asp:GridView>
+    
+ </asp:Content>

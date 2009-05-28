@@ -19,5 +19,10 @@ namespace Group9.Prototype1.DataAccess
                             Signature = pp.signature
                         };
         }
+
+        public char GetGrade()
+        {
+            return CourseRun.CalculateGrade(Person);
+        }
     }
 }
