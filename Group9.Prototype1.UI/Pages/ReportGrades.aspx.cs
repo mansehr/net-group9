@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
@@ -64,7 +65,7 @@ namespace Group9.Prototype1.UI.Pages
 
                     partiPart.result = tbResult.SelectedValue[0];
                     partiPart.date = DateTime.Now;
-                    partiPart.signature = "KR";
+                    partiPart.signature = User.Identity.Name;
                 }
 
                 db.SubmitChanges();
@@ -79,7 +80,9 @@ namespace Group9.Prototype1.UI.Pages
         protected void ddlCoursePart_SelectedIndexChanged(object sender, EventArgs e)
         {
             panelGrades.Visible = true;
-            gvStudentsAndGrades.DataBind();
+            filterWindow.Visible = true;
+
+            updateList();
         }
 
         protected void gvStudentsAndGrades_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -94,13 +97,67 @@ namespace Group9.Prototype1.UI.Pages
 
             tbResult.Attributes.Add("onchange", string.Format("this.style.backgroundColor = (this.value == '{0}' ? 'white' : '#7EFF7C');", data.Result.HasValue ? data.Result.ToString() : ""));
             
-            
-
             if (data.Result != null)
             {
                 tbResult.SelectedValue = data.Result.ToString();
-                liResult.Text = string.Format("Last result {0}, registered by: {1}, {2:g}", data.Result, data.Signature, data.Date);
+
+                liResult.Text = string.Format("Last result {0}, registered by: {1}, {2:g}", data.Result, data.Signature.FullName, data.Date);
             }
+        }
+
+        protected void postFilter_Click(object sender, EventArgs e)
+        {
+            updateList();
+        }
+
+        
+
+        protected void resetFilter_Click(object sender, EventArgs e)
+        {
+            tbFilterPnr.Text = "";
+            tbFilterFName.Text = "";
+            tbFilterLName.Text = "";
+            updateList();
+        }
+        
+        protected void updateList()
+        {
+            String pnr = "", fName = "", lName = "";
+
+            pnr = tbFilterPnr.Text;
+            fName = tbFilterFName.Text;
+            lName = tbFilterLName.Text;
+
+            DBDataContext context = new DBDataContext();
+
+            var participants = from p in context.Participants
+                               where p.runid == ddlCourseRun.SelectedValue &&
+                                     p.code == ddlCourse.SelectedValue
+                               select p;
+
+
+            if (pnr.Length > 0)
+            {
+                participants = from p in participants
+                               where p.pnr.StartsWith(pnr)
+                               select p;
+            }
+            if (fName.Length > 0)
+            {
+                participants = from p in participants
+                               where p.Person.fName.StartsWith(fName)
+                               select p;
+            }
+            if (lName.Length > 0)
+            {
+                participants = from p in participants
+                               where p.Person.eName.StartsWith(lName)
+                               select p;
+            }
+
+            gvStudentsAndGrades.DataSourceID = "";
+            gvStudentsAndGrades.DataSource = participants;
+            gvStudentsAndGrades.DataBind(); 
         }
     }
 }

@@ -1100,6 +1100,8 @@ namespace Group9.Prototype1.DataAccess
 		
 		private EntityRef<Participant> _Participant;
 		
+		private EntityRef<Person> _Signature;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1123,6 +1125,7 @@ namespace Group9.Prototype1.DataAccess
 		public PartiPart()
 		{
 			this._Participant = default(EntityRef<Participant>);
+			this._Signature = default(EntityRef<Person>);
 			OnCreated();
 		}
 		
@@ -1269,6 +1272,10 @@ namespace Group9.Prototype1.DataAccess
 			{
 				if ((this._signature != value))
 				{
+					if (this._Signature.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnsignatureChanging(value);
 					this.SendPropertyChanging();
 					this._signature = value;
@@ -1316,6 +1323,40 @@ namespace Group9.Prototype1.DataAccess
 			}
 		}
 		
+		[Association(Name="Person_PartiPart", Storage="_Signature", ThisKey="signature", OtherKey="pnr", IsForeignKey=true)]
+		public Person Signature
+		{
+			get
+			{
+				return this._Signature.Entity;
+			}
+			set
+			{
+				Person previousValue = this._Signature.Entity;
+				if (((previousValue != value) 
+							|| (this._Signature.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Signature.Entity = null;
+						previousValue.ReportedPartiParts.Remove(this);
+					}
+					this._Signature.Entity = value;
+					if ((value != null))
+					{
+						value.ReportedPartiParts.Add(this);
+						this._signature = value.pnr;
+					}
+					else
+					{
+						this._signature = default(string);
+					}
+					this.SendPropertyChanged("Signature");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1355,6 +1396,8 @@ namespace Group9.Prototype1.DataAccess
 		
 		private EntitySet<Participant> _Participants;
 		
+		private EntitySet<PartiPart> _ReportedPartiParts;
+		
 		private EntityRef<Role> _Role1;
 		
     #region Extensibility Method Definitions
@@ -1376,6 +1419,7 @@ namespace Group9.Prototype1.DataAccess
 		public Person()
 		{
 			this._Participants = new EntitySet<Participant>(new Action<Participant>(this.attach_Participants), new Action<Participant>(this.detach_Participants));
+			this._ReportedPartiParts = new EntitySet<PartiPart>(new Action<PartiPart>(this.attach_ReportedPartiParts), new Action<PartiPart>(this.detach_ReportedPartiParts));
 			this._Role1 = default(EntityRef<Role>);
 			OnCreated();
 		}
@@ -1497,6 +1541,19 @@ namespace Group9.Prototype1.DataAccess
 			}
 		}
 		
+		[Association(Name="Person_PartiPart", Storage="_ReportedPartiParts", ThisKey="pnr", OtherKey="signature")]
+		public EntitySet<PartiPart> ReportedPartiParts
+		{
+			get
+			{
+				return this._ReportedPartiParts;
+			}
+			set
+			{
+				this._ReportedPartiParts.Assign(value);
+			}
+		}
+		
 		[Association(Name="Role_Person", Storage="_Role1", ThisKey="role", OtherKey="code", IsForeignKey=true)]
 		public Role Role
 		{
@@ -1561,6 +1618,18 @@ namespace Group9.Prototype1.DataAccess
 		{
 			this.SendPropertyChanging();
 			entity.Person = null;
+		}
+		
+		private void attach_ReportedPartiParts(PartiPart entity)
+		{
+			this.SendPropertyChanging();
+			entity.Signature = this;
+		}
+		
+		private void detach_ReportedPartiParts(PartiPart entity)
+		{
+			this.SendPropertyChanging();
+			entity.Signature = null;
 		}
 	}
 }

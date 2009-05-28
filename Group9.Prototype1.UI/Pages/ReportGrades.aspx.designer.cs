@@ -68,6 +68,69 @@ namespace Group9.Prototype1.UI.Pages {
         protected global::System.Web.UI.UpdatePanel updatePanel;
         
         /// <summary>
+        /// filterWindow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl filterWindow;
+        
+        /// <summary>
+        /// tbFilterFName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbFilterFName;
+        
+        /// <summary>
+        /// tbFilterLName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbFilterLName;
+        
+        /// <summary>
+        /// tbFilterPnr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbFilterPnr;
+        
+        /// <summary>
+        /// tbFilterPnr_FilteredTextBoxExtender control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender tbFilterPnr_FilteredTextBoxExtender;
+        
+        /// <summary>
+        /// resetFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton resetFilter;
+        
+        /// <summary>
+        /// postFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton postFilter;
+        
+        /// <summary>
         /// lbMessage control.
         /// </summary>
         /// <remarks>
