@@ -55,7 +55,7 @@
       <Column Name="code" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="part" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="result" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="result" Type="System.Char" DbType="char(1) NOT NULL" CanBeNull="false" />
       <Column Name="signature" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Association Name="Participant_PartiPart" Member="Participant" ThisKey="pnr,runid,code" OtherKey="pnr,runid,code" Type="Participant" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>

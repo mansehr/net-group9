@@ -32,15 +32,6 @@ namespace Group9.Prototype1.UI.Pages {
         protected global::System.Web.UI.WebControls.LinqDataSource ldsPeople;
         
         /// <summary>
-        /// ldsRoles control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinqDataSource ldsRoles;
-        
-        /// <summary>
         /// participants control.
         /// </summary>
         /// <remarks>
@@ -50,12 +41,12 @@ namespace Group9.Prototype1.UI.Pages {
         protected global::System.Web.UI.WebControls.GridView participants;
         
         /// <summary>
-        /// newParticipant control.
+        /// gvAddParticipant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DetailsView newParticipant;
+        protected global::System.Web.UI.WebControls.GridView gvAddParticipant;
     }
 }

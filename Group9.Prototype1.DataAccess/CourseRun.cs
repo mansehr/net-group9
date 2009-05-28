@@ -8,7 +8,7 @@ namespace Group9.Prototype1.DataAccess
 {
     public partial class CourseRun
     {
-        public double CalculateGrade(Person person)
+        public char CalculateGrade(Person person)
         {
             if (string.IsNullOrEmpty(this.gradeFormula))
                 throw new InvalidOperationException("Grade formula must be set");
@@ -23,10 +23,24 @@ namespace Group9.Prototype1.DataAccess
                 var resultRegistration = participant.GetResult(part.code);
                 var result = resultRegistration.Result.HasValue ? resultRegistration.Result.Value : 0;
 
-                evaluator.Variables.Add(part.code, result);
+                evaluator.Variables.Add(part.part, result);
             }
 
-            return evaluator.Evaluate(this.gradeFormula);
+            return evaluator.Evaluate(this.gradeFormula).ToGrade();
+        }
+    }
+
+    public static class GradeExtension
+    {
+        public static char ToGrade(this double value)
+        {
+            return Convert.ToChar(65 + (int)value);
+        }
+
+        public static double FromGrade(this char value)
+        {
+            return Convert.ToDouble((int)value - 65);
+            
         }
     }
 }

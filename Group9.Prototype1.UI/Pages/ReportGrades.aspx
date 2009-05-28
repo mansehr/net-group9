@@ -81,8 +81,14 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Grade">
                     <ItemTemplate>
-                        <asp:TextBox ID="tbResult" runat="server" Columns="6" />
-                        <asp:RegularExpressionValidator ID="revResult" runat="server" ControlToValidate="tbResult" ValidationExpression="^\d+([\.,]\d+)?$" ErrorMessage="(Invalid format)" Display="Dynamic" />
+                        <asp:DropDownList ID="tbResult" runat="server">
+                            <asp:ListItem Text="F" />
+                            <asp:ListItem Text="E" />
+                            <asp:ListItem Text="D" />
+                            <asp:ListItem Text="C" />
+                            <asp:ListItem Text="B" />
+                            <asp:ListItem Text="A" />
+                        </asp:DropDownList>
                         <small><asp:Literal ID="liResult" runat="server" /></small>
                     </ItemTemplate>
                 </asp:TemplateField>

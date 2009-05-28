@@ -62,7 +62,7 @@ namespace Group9.Prototype1.UI.Pages
                         db.PartiParts.InsertOnSubmit(partiPart);
                     }
 
-                    partiPart.result = double.Parse(tbResult.Text);
+                    partiPart.result = tbResult.Text[0];
                     partiPart.date = DateTime.Now;
                     partiPart.signature = "KR";
                 }
