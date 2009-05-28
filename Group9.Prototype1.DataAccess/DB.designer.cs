@@ -318,8 +318,8 @@ namespace Group9.Prototype1.DataAccess
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OncodeChanging(string value);
-    partial void OncodeChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
     partial void OndescriptionChanging(string value);
     partial void OndescriptionChanged();
     #endregion
@@ -330,8 +330,8 @@ namespace Group9.Prototype1.DataAccess
 			OnCreated();
 		}
 		
-		[Column(Storage="_code", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string code
+		[Column(Name="code", Storage="_code", DbType="VarChar(30) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Name
 		{
 			get
 			{
@@ -341,11 +341,11 @@ namespace Group9.Prototype1.DataAccess
 			{
 				if ((this._code != value))
 				{
-					this.OncodeChanging(value);
+					this.OnNameChanging(value);
 					this.SendPropertyChanging();
 					this._code = value;
-					this.SendPropertyChanged("code");
-					this.OncodeChanged();
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
 				}
 			}
 		}
@@ -370,7 +370,7 @@ namespace Group9.Prototype1.DataAccess
 			}
 		}
 		
-		[Association(Name="Role_Person", Storage="_Persons", ThisKey="code", OtherKey="role")]
+		[Association(Name="Role_Person", Storage="_Persons", ThisKey="Name", OtherKey="role")]
 		public EntitySet<Person> Persons
 		{
 			get
@@ -860,8 +860,6 @@ namespace Group9.Prototype1.DataAccess
 		
 		private string _pnr;
 		
-		private string _roll;
-		
 		private string _runid;
 		
 		private string _code;
@@ -878,8 +876,6 @@ namespace Group9.Prototype1.DataAccess
     partial void OnCreated();
     partial void OnpnrChanging(string value);
     partial void OnpnrChanged();
-    partial void OnrollChanging(string value);
-    partial void OnrollChanged();
     partial void OnrunidChanging(string value);
     partial void OnrunidChanged();
     partial void OncodeChanging(string value);
@@ -914,26 +910,6 @@ namespace Group9.Prototype1.DataAccess
 					this._pnr = value;
 					this.SendPropertyChanged("pnr");
 					this.OnpnrChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_roll", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
-		public string roll
-		{
-			get
-			{
-				return this._roll;
-			}
-			set
-			{
-				if ((this._roll != value))
-				{
-					this.OnrollChanging(value);
-					this.SendPropertyChanging();
-					this._roll = value;
-					this.SendPropertyChanged("roll");
-					this.OnrollChanged();
 				}
 			}
 		}
@@ -1521,7 +1497,7 @@ namespace Group9.Prototype1.DataAccess
 			}
 		}
 		
-		[Association(Name="Role_Person", Storage="_Role1", ThisKey="role", OtherKey="code", IsForeignKey=true)]
+		[Association(Name="Role_Person", Storage="_Role1", ThisKey="role", OtherKey="Name", IsForeignKey=true)]
 		public Role Role1
 		{
 			get
@@ -1544,7 +1520,7 @@ namespace Group9.Prototype1.DataAccess
 					if ((value != null))
 					{
 						value.Persons.Add(this);
-						this._role = value.code;
+						this._role = value.Name;
 					}
 					else
 					{

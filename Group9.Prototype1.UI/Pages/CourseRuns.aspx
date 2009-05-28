@@ -33,7 +33,7 @@
             <asp:BoundField DataField="gradeFormula" HeaderText="Grade Formula" />
             <asp:HyperLinkField DataNavigateUrlFields="code,runid" DataNavigateUrlFormatString="~/Pages/CourseParts.aspx?code={0}&runid={1}" Text="Parts" />
             <asp:HyperLinkField DataNavigateUrlFields="code,runid" DataNavigateUrlFormatString="~/Pages/CourseRunParticipants.aspx?code={0}&runid={1}" Text="Participants" />
-            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" DeleteImageUrl="~/Resources/Images/delete.png" EditImageUrl="~/Resources/Images/edit.png" ButtonType="Image"  />
+            <asp:CommandField CausesValidation="false" ShowDeleteButton="True" ShowEditButton="True" DeleteImageUrl="~/Resources/Images/delete.png" EditImageUrl="~/Resources/Images/edit.png" ButtonType="Image"  />
         </Columns>
     </asp:GridView>
 
@@ -50,8 +50,8 @@
                 </EditItemTemplate>
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("runid") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="TextBox1" ErrorMessage="Required" Display="Dynamic" />
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox1" ValidationExpression="^(\d{2})(V|H)(1|2)$" ErrorMessage="Invalid format (yytp, yy = year, t = termin, p = period)" Display="Dynamic" />
+                    <asp:RequiredFieldValidator runat="server" ValidationGroup="New" ControlToValidate="TextBox1" ErrorMessage="Required" Display="Dynamic" />
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ValidationGroup="New" ControlToValidate="TextBox1" ValidationExpression="^(\d{2})(V|H)(1|2)$" ErrorMessage="Invalid format (yytp, yy = year, t = termin, p = period)" Display="Dynamic" />
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("runid") %>'></asp:Label>
@@ -66,17 +66,17 @@
             <asp:TemplateField HeaderText="Description" SortExpression="description">
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("description") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox4" ErrorMessage="Required" Display="Dynamic" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="New" ControlToValidate="TextBox4" ErrorMessage="Required" Display="Dynamic" />
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Grade Formula">
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox5" runat="server" 
                         Text='<%# Bind("gradeFormula") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox5" ErrorMessage="Required" Display="Dynamic" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ValidationGroup="New" ControlToValidate="TextBox5" ErrorMessage="Required" Display="Dynamic" />
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:CommandField ShowInsertButton="True" CausesValidation="true" />
+            <asp:CommandField ShowInsertButton="True" CausesValidation="true" ValidationGroup="New" />
         </Fields>
     </asp:DetailsView>
     

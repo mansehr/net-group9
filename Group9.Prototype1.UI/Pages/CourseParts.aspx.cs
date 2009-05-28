@@ -18,6 +18,7 @@ namespace Group9.Prototype1.UI.Pages
         protected void DetailsView1_ItemInserting(object sender, DetailsViewInsertEventArgs e)
         {
             e.Values.Add("code", Request.QueryString["code"]);
+            e.Values.Add("runid", Request.QueryString["runid"]);
         }
 
         protected void DetailsView1_ItemInserted(object sender, DetailsViewInsertedEventArgs e)
