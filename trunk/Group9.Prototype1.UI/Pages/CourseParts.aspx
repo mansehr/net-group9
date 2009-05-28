@@ -23,8 +23,6 @@
                 SortExpression="part" />
             <asp:BoundField DataField="description" HeaderText="Description" 
                 SortExpression="description" />
-            <asp:BoundField DataField="maxScore" HeaderText="Max Score" 
-                SortExpression="maxScore" />
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" DeleteImageUrl="~/Resources/Images/delete.png" EditImageUrl="~/Resources/Images/edit.png" ButtonType="Image"  />
         </Columns>
     </asp:GridView>
@@ -39,21 +37,16 @@
             <asp:TemplateField HeaderText="Part Identifier" SortExpression="part">
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("part") %>'></asp:TextBox>
-                    <asp:RequiredFieldValidator ControlToValidate="TextBox1" ErrorMessage="Required" Display="Dynamic" />
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="TextBox1" ErrorMessage="Required" Display="Dynamic" />
                     <asp:RegularExpressionValidator runat="server" ControlToValidate="TextBox1" ValidationExpression="^([A-Z]{3,5})$" ErrorMessage="Invalid format (3-5 chars)" />
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Description" SortExpression="description">
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("description") %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox4" ErrorMessage="Required" Display="Dynamic" />
                 </InsertItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Max Score" SortExpression="maxScore">
-                <InsertItemTemplate>
-                    <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("maxScore") %>'></asp:TextBox>
-                </InsertItemTemplate>
-            </asp:TemplateField>
-            
             <asp:CommandField ShowInsertButton="True" />
         </Fields>
     </asp:DetailsView>
