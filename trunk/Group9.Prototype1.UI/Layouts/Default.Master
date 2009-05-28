@@ -1,0 +1,37 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="Group9.Prototype1.UI.Layouts.Default" EnableTheming="true" %>
+
+<%@ Register Assembly="Group9.Prototype1.UI" Namespace="Group9.Prototype1.UI.Controls"
+    TagPrefix="cc" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+    <head runat="server">
+        <title>RES</title>
+        <link rel="Stylesheet" href="../Resources/Default.css" type="text/css" />
+        <asp:ContentPlaceHolder ID="head" runat="server">
+        </asp:ContentPlaceHolder>
+    </head>
+    <body>
+        <form runat="server" id="form">
+        <div id="container">
+            <div id="header">
+              <div id="menu">
+                <ul>
+                  <cc:Menu ID="Menu" runat="server" />
+                  <li><asp:LoginStatus ID="LoginStatus1" runat="server" /></li>
+                </ul>
+                </div>
+                <div id="logo">
+                    <h1><asp:hyperlink runat="server" NavigateUrl="~/" Text="res" /></h1>
+                </div>
+            </div>
+            <div id="content">
+                
+                <asp:ContentPlaceHolder ID="Content" runat="server"></asp:ContentPlaceHolder>
+            </div>
+            <div id="footer">
+              <p>Prototyp <%= typeof(Group9.Prototype1.UI.Layouts.Default).Assembly.GetName().Version %> </p>
+            </div>
+        </div>
+        </form>
+    </body>
+</html>

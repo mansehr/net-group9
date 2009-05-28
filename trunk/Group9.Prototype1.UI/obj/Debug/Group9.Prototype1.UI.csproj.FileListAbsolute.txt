@@ -1,0 +1,17 @@
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototyp1.UI\bin\Group9.Prototype1.UI.dll
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototyp1.UI\bin\Group9.Prototype1.UI.pdb
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototyp1.UI\bin\Group9.Prototype1.DataAccess.dll
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototyp1.UI\bin\Group9.Prototype1.DataAccess.pdb
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototyp1.UI\obj\Debug\ResolveAssemblyReference.cache
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototyp1.UI\obj\Debug\Group9.Prototype1.UI.dll
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototyp1.UI\obj\Debug\Group9.Prototype1.UI.pdb
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.UI\bin\Group9.Prototype1.UI.dll
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.UI\bin\Group9.Prototype1.UI.pdb
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.UI\bin\Group9.Prototype1.DataAccess.dll
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.UI\bin\Group9.Prototype1.DataAccess.pdb
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.UI\obj\Debug\ResolveAssemblyReference.cache
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.UI\obj\Debug\Group9.Prototype1.UI.dll
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.UI\obj\Debug\Group9.Prototype1.UI.pdb
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.UI\bin\LoreSoft.MathExpressions.dll
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.UI\bin\LoreSoft.MathExpressions.pdb
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.UI\bin\LoreSoft.MathExpressions.xml

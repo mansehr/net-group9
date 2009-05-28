@@ -1,0 +1,3 @@
+﻿<asp:Hyperlink runat="server" />
+<asp:GridView runat="server" GridLines="None" />
+<asp:DetailsView runat="server" GridLines="None" />
