@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="NET-Prototype1" Class="DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=NET-Prototype1;Integrated Security=True;Pooling=False" SettingsObjectName="Group9.Prototype1.DataAccess.Properties.Settings" SettingsPropertyName="NET_Prototype1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Course" Member="Courses">
+    <Type Name="Course">
+      <Column Name="code" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="credits" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Association Name="Course_CourseRun" Member="CourseRuns" ThisKey="code" OtherKey="code" Type="CourseRun" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Role" Member="Roles">
+    <Type Name="Role">
+      <Column Name="code" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Role_Person" Member="Persons" ThisKey="code" OtherKey="role" Type="Person" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CoursePart" Member="CourseParts">
+    <Type Name="CoursePart">
+      <Column Name="code" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="part" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="runid" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="maxScore" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="CourseRun_CoursePart" Member="CourseRun" ThisKey="runid,code" OtherKey="runid,code" Type="CourseRun" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CourseRun" Member="CourseRuns">
+    <Type Name="CourseRun">
+      <Column Name="runid" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="startDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="gradeFormula" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="CourseRun_CoursePart" Member="CourseParts" ThisKey="runid,code" OtherKey="runid,code" Type="CoursePart" />
+      <Association Name="CourseRun_Participant" Member="Participants" ThisKey="runid,code" OtherKey="runid,code" Type="Participant" />
+      <Association Name="Course_CourseRun" Member="Course" ThisKey="code" OtherKey="code" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Participant" Member="Participants">
+    <Type Name="Participant">
+      <Column Name="pnr" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="roll" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="runid" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Participant_PartiPart" Member="PartiParts" ThisKey="pnr,runid,code" OtherKey="pnr,runid,code" Type="PartiPart" />
+      <Association Name="CourseRun_Participant" Member="CourseRun" ThisKey="runid,code" OtherKey="runid,code" Type="CourseRun" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Person_Participant" Member="Person" ThisKey="pnr" OtherKey="pnr" Type="Person" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PartiPart" Member="PartiParts">
+    <Type Name="PartiPart">
+      <Column Name="pnr" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="runid" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="code" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="part" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="result" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="signature" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="Participant_PartiPart" Member="Participant" ThisKey="pnr,runid,code" OtherKey="pnr,runid,code" Type="Participant" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Person" Member="Persons">
+    <Type Name="Person">
+      <Column Name="pnr" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="fName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="eName" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="role" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="Person_Participant" Member="Participants" ThisKey="pnr" OtherKey="pnr" Type="Participant" />
+      <Association Name="Role_Person" Member="Role1" ThisKey="role" OtherKey="code" Type="Role" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="/" title="Home"  description="">
+        <siteMapNode url="~/Pages/participant.aspx" title="Course participant"  description="Print course participant page" roles="student,assistant" />
+        <siteMapNode url="~/Pages/Courses.aspx" title="Course Administration"  description="Administrate courses." roles="admin" />
+        <siteMapNode url="~/Pages/ReportGrades.aspx" title="Report Grades"  description="Report grades for your courses." roles="assistant,admin" />
+    </siteMapNode>
+</siteMap>

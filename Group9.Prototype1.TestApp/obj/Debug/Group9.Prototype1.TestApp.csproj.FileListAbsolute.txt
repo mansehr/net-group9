@@ -1,0 +1,8 @@
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.TestApp\obj\Debug\ResolveAssemblyReference.cache
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.TestApp\bin\Debug\Group9.Prototype1.TestApp.exe
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.TestApp\bin\Debug\Group9.Prototype1.TestApp.pdb
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.TestApp\bin\Debug\LoreSoft.MathExpressions.dll
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.TestApp\bin\Debug\LoreSoft.MathExpressions.pdb
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.TestApp\bin\Debug\LoreSoft.MathExpressions.xml
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.TestApp\obj\Debug\Group9.Prototype1.TestApp.exe
+D:\Users\Kristoffer\Documents\Skola\netprog09\Prototyp 1\Group9.Prototype1.TestApp\obj\Debug\Group9.Prototype1.TestApp.pdb
