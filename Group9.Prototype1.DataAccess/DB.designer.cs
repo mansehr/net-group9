@@ -430,8 +430,6 @@ namespace Group9.Prototype1.DataAccess
 		
 		private string _description;
 		
-		private int _maxScore;
-		
 		private EntityRef<CourseRun> _CourseRun;
 		
     #region Extensibility Method Definitions
@@ -446,8 +444,6 @@ namespace Group9.Prototype1.DataAccess
     partial void OnrunidChanged();
     partial void OndescriptionChanging(string value);
     partial void OndescriptionChanged();
-    partial void OnmaxScoreChanging(int value);
-    partial void OnmaxScoreChanged();
     #endregion
 		
 		public CoursePart()
@@ -540,26 +536,6 @@ namespace Group9.Prototype1.DataAccess
 					this._description = value;
 					this.SendPropertyChanged("description");
 					this.OndescriptionChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_maxScore", DbType="Int NOT NULL")]
-		public int maxScore
-		{
-			get
-			{
-				return this._maxScore;
-			}
-			set
-			{
-				if ((this._maxScore != value))
-				{
-					this.OnmaxScoreChanging(value);
-					this.SendPropertyChanging();
-					this._maxScore = value;
-					this.SendPropertyChanged("maxScore");
-					this.OnmaxScoreChanged();
 				}
 			}
 		}

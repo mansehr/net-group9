@@ -23,7 +23,6 @@
       <Column Name="part" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="runid" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="description" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="maxScore" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="CourseRun_CoursePart" Member="CourseRun" ThisKey="runid,code" OtherKey="runid,code" Type="CourseRun" IsForeignKey="true" />
     </Type>
   </Table>
