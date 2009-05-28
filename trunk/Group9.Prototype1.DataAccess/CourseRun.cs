@@ -20,27 +20,62 @@ namespace Group9.Prototype1.DataAccess
             var evaluator = new MathEvaluator();
             foreach (var part in CourseParts)
             {
-                var resultRegistration = participant.GetResult(part.code);
-                var result = resultRegistration.Result.HasValue ? resultRegistration.Result.Value : 0;
+                var resultRegistration = participant.GetResult(part.part);
 
-                evaluator.Variables.Add(part.part, result);
+                if (resultRegistration.Result.HasValue)
+                    evaluator.Variables.Add(part.part, resultRegistration.Result.Value.FromGrade());
+                else
+                    return '?';
             }
 
             return evaluator.Evaluate(this.gradeFormula).ToGrade();
         }
     }
 
+    
+
     public static class GradeExtension
     {
         public static char ToGrade(this double value)
         {
-            return Convert.ToChar(65 + (int)value);
+            switch ((int)Math.Ceiling(value))
+            {
+                case 0:
+                    return 'F';
+                case 1:
+                    return 'E';
+                case 2:
+                    return 'D';
+                case 3:
+                    return 'C';
+                case 4:
+                    return 'B';
+                case 5:
+                    return 'A';
+                default:
+                    throw new ArgumentException("Invalid value " + value);
+            }
         }
 
         public static double FromGrade(this char value)
         {
-            return Convert.ToDouble((int)value - 65);
-            
+            switch (value)
+            {
+                case 'F':
+                    return 0d;
+                case 'E':
+                    return 1d;
+                case 'D':
+                    return 2d;
+                case 'C':
+                    return 3d;
+                case 'B':
+                    return 4d;
+                case 'A':
+                    return 5d;
+                default:
+                    throw new ArgumentException("Invalid value " + value);
+            }
         }
     }
 }
