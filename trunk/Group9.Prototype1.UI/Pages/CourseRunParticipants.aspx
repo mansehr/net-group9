@@ -39,7 +39,6 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Course grade">
                 <ItemTemplate>
-                    <%#  %>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:CommandField ShowDeleteButton="True" />
