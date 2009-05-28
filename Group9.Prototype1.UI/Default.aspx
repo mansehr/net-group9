@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Layouts/Default.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" Title="Welcome to RES" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Layouts/Default.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="Group9.Prototype1.UI.Pages._Default" Title="Welcome to RES" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -24,7 +24,8 @@
             }
             user_roles += "</ul>";
 
-            Welcome.InnerHtml = "Välkommen, " + Context.User.Identity.Name+user_roles;
+            Welcome.InnerHtml = "Välkommen, " + this.currentPerson.FullName +
+                                    user_roles;
         }
         else
         {
@@ -32,6 +33,7 @@
         }
     }
 </script>
+
 <span id="Welcome" runat="server" />
     <p>
     <span id="Signing" runat="server">
