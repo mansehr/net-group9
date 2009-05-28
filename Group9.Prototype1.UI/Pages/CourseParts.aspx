@@ -6,10 +6,11 @@
     <asp:ScriptManager id="scriptManager" runat="server" />
     <asp:LinqDataSource ID="ldsCourseParts" runat="server" 
         ContextTypeName="Group9.Prototype1.DataAccess.DBDataContext" 
-        TableName="CourseParts" Where="code == @code" EnableDelete="True" 
+        TableName="CourseParts" Where="code == @code && runid == @runid" EnableDelete="True" 
         EnableInsert="True" EnableUpdate="True">
         <WhereParameters>
             <asp:QueryStringParameter Name="code" QueryStringField="code" Type="String" />
+            <asp:QueryStringParameter Name="runid" QueryStringField="runid" Type="String" />
         </WhereParameters>
     </asp:LinqDataSource>
     
@@ -38,7 +39,8 @@
             <asp:TemplateField HeaderText="Part Identifier" SortExpression="part">
                 <InsertItemTemplate>
                     <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("part") %>'></asp:TextBox>
-                    <asp:RegularExpressionValidator runat="server" ControlToValidate="TextBox1" ValidationExpression="^([A-Z]{3})\d+$" ErrorMessage="Invalid format (3 chars and a number)" />
+                    <asp:RequiredFieldValidator ControlToValidate="TextBox1" ErrorMessage="Required" Display="Dynamic" />
+                    <asp:RegularExpressionValidator runat="server" ControlToValidate="TextBox1" ValidationExpression="^([A-Z]{3,5})$" ErrorMessage="Invalid format (3-5 chars)" />
                 </InsertItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Description" SortExpression="description">
