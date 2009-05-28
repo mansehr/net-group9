@@ -58,6 +58,7 @@
       <Column Name="result" Type="System.Char" DbType="char(1) NOT NULL" CanBeNull="false" />
       <Column Name="signature" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Association Name="Participant_PartiPart" Member="Participant" ThisKey="pnr,runid,code" OtherKey="pnr,runid,code" Type="Participant" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Person_PartiPart" Member="Signature" ThisKey="signature" OtherKey="pnr" Type="Person" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Person" Member="Persons">
@@ -68,6 +69,7 @@
       <Column Name="email" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Column Name="role" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
       <Association Name="Person_Participant" Member="Participants" ThisKey="pnr" OtherKey="pnr" Type="Participant" />
+      <Association Name="Person_PartiPart" Member="ReportedPartiParts" ThisKey="pnr" OtherKey="signature" Type="PartiPart" />
       <Association Name="Role_Person" Member="Role" Storage="_Role1" ThisKey="role" OtherKey="code" Type="Role" IsForeignKey="true" />
     </Type>
   </Table>

@@ -16,7 +16,7 @@ namespace Group9.Prototype1.DataAccess
                         {
                             Date = pp.date,
                             Result = pp.result,
-                            Signature = pp.signature
+                            Signature = pp.Signature
                         };
         }
 

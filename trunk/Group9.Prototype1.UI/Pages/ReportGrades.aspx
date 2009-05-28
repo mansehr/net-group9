@@ -44,8 +44,37 @@
     <asp:UpdatePanel ID="updatePanel" runat="server">
     <ContentTemplate>
     
-    <asp:Label ID="lbMessage" runat="server" Visible="false" EnableViewState="false" Font-Size="12pt" ></asp:Label>
     
+    
+    <div id="filterWindow" style=" float: right; border: 1px solid black; width:300px; padding: 0px 5px 5px 5px;" runat="server">
+        <h3>Filter</h3>
+        <fieldset>
+               <ul>
+                <li><label>Firstname</label>
+                <asp:TextBox ID="tbFilterFName" runat="server" Width="120"></asp:TextBox> 
+                </li>
+                <li><label>Lastname</label>
+                     <asp:TextBox ID="tbFilterLName" runat="server"  Width="120"></asp:TextBox>
+                </li>
+               <li> <label>SSN </label>
+                    <asp:TextBox ID="tbFilterPnr" runat="server"></asp:TextBox>
+                    <cc1:FilteredTextBoxExtender ID="tbFilterPnr_FilteredTextBoxExtender" 
+                        runat="server" Enabled="True" TargetControlID="tbFilterPnr"  
+                        FilterType="Numbers">
+                    </cc1:FilteredTextBoxExtender><br />
+                </li>
+               </ul>
+               <span style="float:left; margin-top: 10px">
+                <asp:LinkButton ID="resetFilter" runat="server" BorderColor="Black" 
+                    BorderStyle="Dotted" BorderWidth="1px" onclick="resetFilter_Click">Reset</asp:LinkButton>
+              </span>
+              <span style="float:right; margin-top: 10px">
+                   <asp:LinkButton ID="postFilter" runat="server" BorderColor="Black" 
+                       BorderStyle="Dotted" BorderWidth="1px" onclick="postFilter_Click">Filtrer</asp:LinkButton>
+              </span>
+         </fieldset>
+        </div>
+      <asp:Label ID="lbMessage" runat="server" Visible="false" EnableViewState="false" Font-Size="12pt" ></asp:Label>  
     <h3>Select course and course run</h3>
     <fieldset>
         <ul>
@@ -66,16 +95,26 @@
             </li>
         </ul>
     </fieldset>
-    
+    <p>&nbsp;</p>
+        
     <asp:Panel ID="panelGrades" runat="server" Visible="false">
+        
+        
         <h3>Students and enter grade</h3>
+        
         <asp:GridView ID="gvStudentsAndGrades" runat="server" 
-            DataSourceID="ldsParticipants" DataKeyNames="pnr" AutoGenerateColumns="false" 
-            onrowdatabound="gvStudentsAndGrades_RowDataBound" AllowSorting="true">
+            DataSourceID="ldsParticipants" DataKeyNames="pnr" AutoGenerateColumns="False" 
+            onrowdatabound="gvStudentsAndGrades_RowDataBound" AllowSorting="True" 
+            AllowPaging="True" >
             <Columns>
-                <asp:TemplateField HeaderText="Student" SortExpression="Person">
+                <asp:TemplateField HeaderText="Student" SortExpression="Person.FullName">
                     <ItemTemplate>
                         <%# Eval("Person.FullName") %>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="SSN" SortExpression="pnr">
+                    <ItemTemplate>
+                        <%# Eval("Person.pnr") %>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Grade">
@@ -90,11 +129,11 @@
                             <asp:ListItem Text="A" />
                         </asp:DropDownList>
                         <small><asp:Literal ID="liResult" runat="server" /></small>
-                    </ItemTemplate>
+                    </ItemTemplate>                 
                 </asp:TemplateField>
             </Columns>
-            <EmptyDataTemplate>
-                No students in the selected course run.
+            <EmptyDataTemplate >
+                Found no users. 
             </EmptyDataTemplate>
         </asp:GridView>
 
