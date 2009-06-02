@@ -8,11 +8,11 @@
         <asp:Label ID="error_label" runat="server" Font-Bold="True" ForeColor="Red" 
             Visible="False"></asp:Label>
         <p>
-        Nu inloggad som:
-        <asp:Label ID="Label1" runat="server" Text="Ej inloggad"></asp:Label>
+        Logged in user:
+        <asp:Label ID="Label1" runat="server" Text="No One"></asp:Label>
         </p>
         <p>
-        Behörighet:
+        User rights:
         <asp:DropDownList ID="role_select" runat="server" AutoPostBack="True" 
             onselectedindexchanged="DropDownList1_SelectedIndexChanged" 
                 DataSourceID="roleDataSource" DataTextField="description" 
@@ -24,7 +24,7 @@
             </asp:LinqDataSource>
         </p>
         <p>
-        Användare:
+        User:
         <asp:DropDownList ID="user_select" runat="server" DataSourceID="users" 
             DataTextField="FullName" DataValueField="pnr">
         </asp:DropDownList>

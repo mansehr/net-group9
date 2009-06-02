@@ -146,6 +146,10 @@
       <DependentUpon>ReportGrades.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\People.asmx.cs">
+      <DependentUpon>People.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Layouts\Default.Master" />
@@ -172,39 +176,13 @@
     <Content Include="Pages\CourseRuns.aspx" />
     <Content Include="Pages\Courses.aspx" />
     <Content Include="Pages\OldReportGrades.aspx" />
-    <Content Include="Pages\Participant.aspx" />
     <Content Include="Pages\ReportGrades.aspx" />
-    <Content Include="Resources\Icons\action_add.gif" />
-    <Content Include="Resources\Icons\action_check.gif" />
-    <Content Include="Resources\Icons\action_remove.gif" />
-    <Content Include="Resources\Icons\application.gif" />
-    <Content Include="Resources\Icons\arrow_back.gif" />
-    <Content Include="Resources\Icons\arrow_down.gif" />
-    <Content Include="Resources\Icons\arrow_next.gif" />
-    <Content Include="Resources\Icons\arrow_top.gif" />
-    <Content Include="Resources\Icons\comments.gif" />
-    <Content Include="Resources\Icons\delete.gif" />
-    <Content Include="Resources\Icons\download.gif" />
-    <Content Include="Resources\Icons\edit.gif" />
-    <Content Include="Resources\Icons\file.gif" />
-    <Content Include="Resources\Icons\folder.gif" />
-    <Content Include="Resources\Icons\folder_files.gif" />
-    <Content Include="Resources\Icons\folder_open.gif" />
-    <Content Include="Resources\Icons\letter.gif" />
-    <Content Include="Resources\Icons\letter_open.gif" />
-    <Content Include="Resources\Icons\login.gif" />
-    <Content Include="Resources\Icons\maximize.gif" />
-    <Content Include="Resources\Icons\minimize.gif" />
-    <Content Include="Resources\Icons\rss.gif" />
-    <Content Include="Resources\Icons\save.gif" />
-    <Content Include="Resources\Icons\search.gif" />
-    <Content Include="Resources\Icons\time.gif" />
-    <Content Include="Resources\Icons\user.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ConnectionStrings.config" />
     <Content Include="Default.aspx" />
     <Content Include="Mobile\Report.aspx" />
+    <Content Include="Pages\Participant.aspx" />
+    <Content Include="Services\People.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Themes\" />

@@ -12,9 +12,8 @@
           <AspNetDebugging>True</AspNetDebugging>
           <NativeDebugging>False</NativeDebugging>
           <SQLDebugging>False</SQLDebugging>
-          <PublishCopyOption>RunFiles</PublishCopyOption>
-          <PublishTargetLocation>
-          </PublishTargetLocation>
+          <PublishCopyOption>ProjectFiles</PublishCopyOption>
+          <PublishTargetLocation>http://netprog.mine.nu/</PublishTargetLocation>
           <PublishDeleteAllFiles>False</PublishDeleteAllFiles>
           <PublishCopyAppData>True</PublishCopyAppData>
           <ExternalProgram>

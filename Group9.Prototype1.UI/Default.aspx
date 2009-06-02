@@ -11,5 +11,4 @@
     <p>
         <asp:Literal ID="liSigning" runat="server" />
     </p>
-    </span>
 </asp:Content>
