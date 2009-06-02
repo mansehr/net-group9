@@ -20,6 +20,17 @@
         //  update the contents in the detail panel
         this.updPnlCourseDetail.Update();
     }
+
+    protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+    {
+       e.Command.Parameters["@pnr"].Value = User.Identity.Name;
+    }
+
+    protected void ldsUserParts_Selecting(object sender, LinqDataSourceSelectEventArgs e)
+    {
+        e.WhereParameters.Remove("pnr");
+        e.WhereParameters.Add("pnr", User.Identity.Name);
+    }
 </script>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
@@ -37,11 +48,12 @@
     </asp:LinqDataSource>
     <asp:LinqDataSource ID="ldsUserParts" runat="server" 
              ContextTypeName="Group9.Prototype1.DataAccess.DBDataContext" 
-    TableName="PartiParts" Where="code == @code &amp;&amp; pnr == @pnr" >
+    TableName="PartiParts" Where="code == @code &amp;&amp; pnr == @pnr" 
+        onselecting="ldsUserParts_Selecting" >
         <WhereParameters>
             <asp:ControlParameter ControlID="gvCourseList" Name="code" 
                 PropertyName="SelectedValue" Type="String" />
-            <asp:Parameter DefaultValue="1234" Name="pnr" Type="String" />
+            <asp:Parameter DefaultValue="" Name="pnr" Type="String" />
         </WhereParameters>
     </asp:LinqDataSource>
     <asp:LinqDataSource ID="ldsUserLatestChange" runat="server" 
@@ -59,6 +71,7 @@
             ContextTypeName="Group9.Prototype1.DataAccess.DBDataContext" 
             TableName="CourseRuns" >
             </asp:LinqDataSource>
+
         <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
             <ContentTemplate>    
                 <asp:GridView ID="gvCourseList" runat="server" DataSourceID="SqlDataSource1" 
@@ -84,9 +97,10 @@
                 </asp:GridView>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:NET-Prototype1ConnectionString %>" 
-                    SelectCommand="SELECT * FROM [CoursePartView] WHERE ([pnr] = @pnr)">
+                    SelectCommand="SELECT * FROM [CoursePartView] WHERE ([pnr] = @pnr)" 
+                    onselecting="SqlDataSource1_Selecting">
                     <SelectParameters>
-                        <asp:Parameter DefaultValue="1234" Name="pnr" Type="String" />
+                        <asp:Parameter DefaultValue="" Name="pnr" Type="String" />
                     </SelectParameters>
                 </asp:SqlDataSource>
             </ContentTemplate>
@@ -126,7 +140,8 @@
                         SortExpression="result" />
                     <asp:BoundField DataField="date" HeaderText="Registration date" ReadOnly="True" 
                         SortExpression="date" />
-                    <asp:BoundField DataField="signature" HeaderText="Signature" ReadOnly="True" 
+                    
+                    <asp:BoundField DataField="Signature" HeaderText="Signature" ReadOnly="True" 
                         SortExpression="signature" />
                 </Columns>
             </asp:GridView>

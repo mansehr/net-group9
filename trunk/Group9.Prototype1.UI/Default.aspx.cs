@@ -18,7 +18,7 @@ namespace Group9.Prototype1.UI
                 DBDataContext context = new DBDataContext();
                 var person = context.Persons.Single(x => x.pnr == User.Identity.Name);
 
-                liWelcome.Text = string.Format("Välkommen <strong>{0}</strong>, du har rollen <strong>{1}</strong>.", person.FullName, person.Role.description);
+                liWelcome.Text = string.Format("Welcome <strong>{0}</strong>, you have the role as <strong>{1}</strong>.", person.FullName, person.Role.description);
             }
             else
             {

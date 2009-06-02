@@ -322,3 +322,18 @@ div.fieldWithErrors input
 	color: #f7f7f7;
 	text-decoration: underline;
 }
+
+/*Modal Popup*/
+.modalBackground {
+	background-color:Gray;
+	filter:alpha(opacity=70);
+	opacity:0.7;
+}
+
+.modalPopup {
+	background-color:#ffffee;
+	border-width:2px;
+	border-style:solid;
+	border-color:Gray;
+	padding:15px;
+}
